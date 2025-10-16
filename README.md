@@ -1,10 +1,10 @@
-# 📘 **LAB 01 – TIỀN XỬ LÝ DỮ LIỆU (DATA PREPROCESSING)**
+# **LAB 01 – TIỀN XỬ LÝ DỮ LIỆU (DATA PREPROCESSING)**
 
-## 🧠 **Giới thiệu đồ án**
+## **Giới thiệu đồ án**
 - **Môn học:** Khai phá dữ liệu và Ứng dụng  
 - **Giảng viên hướng dẫn:** ThS. Lê Nhựt Nam  
 
-### 👩‍💻 **Thành viên nhóm**
+### **Thành viên nhóm**
 | Họ và tên            | MSSV     | Vai trò |
 |----------------------|----------|----------|
 | Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
@@ -21,7 +21,7 @@ Mục tiêu là giúp nhóm hiểu rõ vai trò của tiền xử lý trong pipe
 
 ---
 
-## 🧩 **Tiền xử lý dữ liệu hình ảnh**
+## **Tiền xử lý dữ liệu hình ảnh**
 **Bộ dữ liệu:** CIFAR-10  
 **Công cụ & Thư viện:** Python, OpenCV, NumPy, Matplotlib, Pandas, Torchvision  
 
@@ -58,13 +58,13 @@ Mục tiêu là giúp nhóm hiểu rõ vai trò của tiền xử lý trong pipe
 
 ---
 
-## 🔤 **Tiền xử lý dữ liệu khác**
+## **Tiền xử lý dữ liệu khác**
 
 ## Điền vào chỗ trống
 
 ---
 
-## 📚 **Tài liệu tham khảo**
+## **Tài liệu tham khảo**
 1. CIFAR-10 Dataset – [https://www.cs.toronto.edu/~kriz/cifar.html](https://www.cs.toronto.edu/~kriz/cifar.html)  
 2. OpenCV Documentation – [https://docs.opencv.org/](https://docs.opencv.org/)  
 3. NumPy Documentation – [https://numpy.org/doc/](https://numpy.org/doc/)  
