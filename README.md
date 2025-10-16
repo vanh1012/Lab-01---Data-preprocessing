@@ -104,7 +104,7 @@
 
 ---
 
-## 🧾 **Ghi chú**
+## **Ghi chú**
 - Tất cả cell code trong notebook đều có phần **markdown giải thích** chi tiết.  
 - Toàn bộ ảnh được xử lý theo **batch** (không giới hạn số lượng).  
 - Báo cáo viết bằng **tiếng Việt**, định dạng `.ipynb` + `.pdf`.  
@@ -112,5 +112,5 @@
 
 ---
 
-> 📍 *Sinh viên thực hiện: Nhóm Vũ Anh – Quách Châu Hạo Kiệt – Nguyễn Trần Minh Thư (Khoa CNTT, ĐH KHTN)*  
+> *Sinh viên thực hiện: Nhóm Vũ Anh – Quách Châu Hạo Kiệt – Nguyễn Trần Minh Thư (Khoa CNTT, ĐH KHTN)*  
 > *TP. Hồ Chí Minh, tháng 10 năm 2025*
