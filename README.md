@@ -8,14 +8,14 @@
 | Họ và tên            | MSSV     | Vai trò |
 |----------------------|----------|----------|
 | Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
-| Quách Châu Hạo Kiệt  | 23127078 | Tiền xử lý dữ liệu bảng |
-| Vũ Anh               | 23127321 | Tiền xử lý dữ liệu ... |
+| Quách Châu Hạo Kiệt  | 23127078 | Tiền xử lý dữ liệu văn bản |
+| Vũ Anh               | 23127321 | Tiền xử lý dữ liệu bảng |
 
 **Mục tiêu đồ án:**  
 Xây dựng và trình bày quy trình **tiền xử lý dữ liệu (data preprocessing)** cho ba dạng dữ liệu phổ biến trong học máy:  
 1. **Dữ liệu hình ảnh (Image Data)**  
 2. **Dữ liệu bảng (Tabular Data)**  
-3. **Dữ liệu khác (Text / Time-series / Audio)**  
+3. **Dữ liệu khác (Text)**  
 
 Mục tiêu là giúp nhóm hiểu rõ vai trò của tiền xử lý trong pipeline học máy, chuẩn bị dữ liệu sạch, thống nhất và tối ưu cho mô hình.
 
