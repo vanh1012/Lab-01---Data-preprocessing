@@ -1,101 +1,89 @@
+## Lab 01 — Tiền xử lý dữ liệu (Data Preprocessing)
 
+Tài liệu này mô tả nội dung, cấu trúc và hướng dẫn tái tạo (reproducibility) cho Lab 01 — một bộ notebook minh họa các bước tiền xử lý dữ liệu cho dữ liệu ảnh, bảng và văn bản.
 
-# Bài tập Lab 01 — Tiền xử lý dữ liệu
+### Tóm tắt (Abstract)
 
-Kho chứa này chứa các notebook và dữ liệu mẫu dùng cho Lab 1 (Tiền xử lý dữ liệu) trong môn Khai phá dữ liệu. Các bài tập minh họa quy trình tiền xử lý phổ biến cho ba loại dữ liệu: ảnh, dữ liệu bảng (tabular) và văn bản. Các notebook được thiết kế để có thể chạy lại (reproducible) và dễ tùy chỉnh.
+Mục tiêu của repository là cung cấp một pipeline tiền xử lý minh họa, có thể chạy lại được, để sinh viên thực hành các bước tiền xử lý chuẩn: làm sạch dữ liệu, mã hoá biến, chuẩn hoá, trích đặc trưng (feature engineering) và xuất artefact (bảng/ảnh/manifest). Các notebook đều kèm ví dụ, trực quan hóa và lưu kết quả để dùng tiếp cho mô hình hoá.
 
-Mục tiêu chính
-- Minh họa các bước tiền xử lý tiêu chuẩn cho dữ liệu ảnh, bảng và văn bản.
-- Tạo bộ dữ liệu sạch, đồng nhất, sẵn sàng cho bước huấn luyện mô hình.
-- Cung cấp các notebook ngắn, có chú thích rõ ràng để sinh viên thực hành và mở rộng.
+### Quick facts
 
-Giảng viên / Khóa học
-- Môn: Khai phá dữ liệu và Ứng dụng
-- Giảng viên hướng dẫn: ThS. Lê Nhựt Nam
+- Ngôn ngữ: Python 3.8+ (khuyến nghị 3.10+)
+- Môi trường: Jupyter Notebook / JupyterLab
+- Thư viện chính: numpy, pandas, scikit-learn, matplotlib, opencv-python, pillow, nltk
 
-Thành viên nhóm
-| Họ và tên | MSSV | Phần phụ trách |
-|---|---:|---|
-| Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
-| Quách Châu Hạo Kiệt | 23127078 | Tiền xử lý dữ liệu văn bản |
-| Vũ Anh | 23127321 | Tiền xử lý dữ liệu bảng |
+### Nội dung chính
 
-## Cấu trúc
+Thư mục `notebooks/` chứa 3 notebook tương ứng ba loại dữ liệu:
 
-Các tệp và thư mục chính
-- `requirements.txt` — danh sách phụ thuộc Python cho các notebook
-- `README.md` — tệp README
-- `data/` — chứa dữ liệu mẫu
-   - `image/dataset/` — tập ảnh dùng trong notebook ảnh
-   - `tabular/fraudTest.csv` — dữ liệu mẫu cho tiền xử lý tabular
-   - `text/IMDB Dataset.csv` — dữ liệu đánh giá phim (IMDB) cho bài xử lý văn bản
-- `notebooks/` — các Jupyter notebook cho từng loại dữ liệu
-   - `01_Image_Preprocessing.ipynb`
-   - `02 _tabular_preprocessing.ipynb`
-   - `03_Text_Preprocessing.ipynb`
+- `01_Image_Preprocessing.ipynb` — đọc/chuẩn hóa/resize ảnh, benchmark nội suy, edge detection (Sobel/Prewitt/Canny), xuất ảnh demo và các CSV kết quả.
+- `02_tabular_preprocessing.ipynb` — EDA nhanh, xử lý giá trị thiếu, chuẩn hóa (Z-score / Robust), mã hoá phân loại (One-Hot / Frequency), feature selection (VarianceThreshold, correlation pruning).
+- `03_Text_Preprocessing.ipynb` — làm sạch văn bản, tokenization, stopword removal, stemming/lemmatization, vectorization (Count / TF-IDF) và trực quan hóa.
 
-## Mô tả ngắn các bộ dữ liệu
+Mỗi notebook có phần mô tả đầu file, cấu hình đường dẫn dữ liệu và các biến cấu hình để bạn dễ chỉnh.
 
-- Dữ liệu ảnh (`data/image/dataset/`)
-   - Tập ảnh mẫu dùng để minh họa cách thay đổi kích thước (resize), chuyển sang grayscale, chuẩn hóa và phát hiện biên (edge detection). (README gốc có tham chiếu CIFAR-10 — notebook minh họa tương tự trên dữ liệu cung cấp trong thư mục.)
+### Dữ liệu 
 
-- Dữ liệu bảng (`data/tabular/fraudTest.csv`)
-   - Ví dụ nhỏ dùng để thực hành: xử lý giá trị thiếu, mã hóa biến phân loại, chuẩn hóa dữ liệu, và phân tích khám phá cơ bản.
+- `data/image/` — ảnh mẫu, kèm khả năng tạo ảnh synthetic nếu không có tập thật.
+- `data/tabular/fraudTest.csv` — dataset mẫu cho tiền xử lý tabular (ví dụ: phát hiện gian lận).
+- `data/text/IMDB Dataset.csv` — bộ dữ liệu đánh giá phim (IMDB) dùng cho tiền xử lý văn bản.
 
-- Dữ liệu văn bản (`data/text/IMDB Dataset.csv`)
-   - Bộ dữ liệu đánh giá phim dùng để minh họa tiền xử lý văn bản: làm sạch, tách từ, loại bỏ stopwords, và chuyển sang biểu diễn số (TF-IDF v.v.).
+Ghi chú: các notebook đã cấu hình đường dẫn tương đối (ví dụ `../data/...`). Nếu bạn mở notebook từ folder `notebooks/`, đường dẫn sẽ đúng.
 
-## Hướng dẫn chạy (tóm tắt)
+### Kết quả mong đợi
 
-1. Tạo môi trường Python (khuyến nghị):
+Khi chạy từng notebook (từ trên xuống), bạn sẽ nhận được:
+
+- Các file CSV tổng hợp (benchmark, stats, manifests) được lưu trong `outputs/` (hoặc `notebooks/outputs` tuỳ cấu hình trong notebook).
+- Các ảnh minh họa / figure trong thư mục `outputs/figs` hoặc `outputs/demo_export`.
+- DataFrame đã tiền xử lý có thể được lưu lại để dùng cho bước huấn luyện tiếp theo.
+
+### Reproducibility — cách chạy nhanh
+
+1) Tạo môi trường ảo và kích hoạt (Windows, bash):
 
 ```bash
-# Trên Windows (bash)
 python -m venv .venv
 source .venv/Scripts/activate
 ```
 
-2. Cài đặt phụ thuộc:
+2) Cài phụ thuộc:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Khởi động Jupyter Lab / Notebook và mở các notebook:
+3) Khởi động Jupyter và mở notebook bạn cần:
 
 ```bash
-jupyter lab
-# hoặc
-jupyter notebook
+jupyter lab   # hoặc `jupyter notebook`
 ```
 
-4. Mở một notebook trong `notebooks/` và chạy từ trên xuống (run cells top-to-bottom). Mỗi notebook có phần mô tả ngắn ở đầu giải thích mục đích và dữ liệu vào.
+4) Chạy các cell từ trên xuống. Nếu notebook dùng biến `OUT_ROOT`, kiểm tra/đổi đường dẫn nếu cần.
 
-## Tóm tắt nội dung từng notebook
+### Cấu trúc repository
 
-- `01_Image_Preprocessing.ipynb`
-   - Minh họa: đọc ảnh, resize (ví dụ 128×128 và 224×224), chuyển RGB → grayscale, chuẩn hóa (Min–Max, symmetric, Z-score), và tuỳ chọn phát hiện biên (Sobel/Canny). Phù hợp với pipeline chuẩn cho CNN.
+```
+.
+├─ data/
+│  ├─ image/
+│  ├─ tabular/
+│  └─ text/
+├─ notebooks/
+│  ├─ 01_Image_Preprocessing.ipynb
+│  ├─ 02_tabular_preprocessing.ipynb
+│  └─ 03_Text_Preprocessing.ipynb
+├─ requirements.txt
+├─ README.md
+└─ REFERENCES.md
+```
 
-- `02 _tabular_preprocessing.ipynb`
-   - Minh họa: đọc `data/tabular/fraudTest.csv`, xử lý giá trị thiếu, mã hoá biến phân loại (one-hot / label), chuẩn hoá (MinMax, StandardScaler), cùng các bước EDA cơ bản (histogram, correlation).
+### Tài liệu tham khảo
 
-- `03_Text_Preprocessing.ipynb`
-   - Minh họa: đọc `data/text/IMDB Dataset.csv`, làm sạch văn bản, tokenization, loại stopwords, stemming/lemmatization (tuỳ chọn), và chuyển văn bản sang biểu diễn số (TF-IDF / CountVectorizer).
-
-## Phụ thuộc
-
-Danh sách phụ thuộc chi tiết nằm trong `requirements.txt`. Các thư viện thường dùng trong notebook gồm:
-
-- numpy, pandas, matplotlib, scikit-learn, opencv-python, nltk (hoặc spaCy), jupyter
-
-Hãy cài bằng `pip install -r requirements.txt` trước khi chạy các notebook.
+Xem `REFERENCES.md` để biết danh sách các nguồn, thư viện và bài báo/công cụ tham chiếu liên quan.
 
 
-## Tài liệu tham khảo
 
-- Scikit-learn preprocessing: https://scikit-learn.org/stable/modules/preprocessing.html
-- OpenCV docs: https://docs.opencv.org/
-- CIFAR-10 dataset (tham khảo): https://www.cs.toronto.edu/~kriz/cifar.html
 
 
 
