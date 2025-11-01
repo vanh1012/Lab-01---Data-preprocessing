@@ -1,77 +1,102 @@
-# **LAB 01 – TIỀN XỬ LÝ DỮ LIỆU (DATA PREPROCESSING)**
 
-## **Giới thiệu đồ án**
-- **Môn học:** Khai phá dữ liệu và Ứng dụng  
-- **Giảng viên hướng dẫn:** ThS. Lê Nhựt Nam  
 
-### **Thành viên nhóm**
-| Họ và tên            | MSSV     | Vai trò |
-|----------------------|----------|----------|
+# Bài tập Lab 01 — Tiền xử lý dữ liệu
+
+Kho chứa này chứa các notebook và dữ liệu mẫu dùng cho Lab 1 (Tiền xử lý dữ liệu) trong môn Khai phá dữ liệu. Các bài tập minh họa quy trình tiền xử lý phổ biến cho ba loại dữ liệu: ảnh, dữ liệu bảng (tabular) và văn bản. Các notebook được thiết kế để có thể chạy lại (reproducible) và dễ tùy chỉnh.
+
+Mục tiêu chính
+- Minh họa các bước tiền xử lý tiêu chuẩn cho dữ liệu ảnh, bảng và văn bản.
+- Tạo bộ dữ liệu sạch, đồng nhất, sẵn sàng cho bước huấn luyện mô hình.
+- Cung cấp các notebook ngắn, có chú thích rõ ràng để sinh viên thực hành và mở rộng.
+
+Giảng viên / Khóa học
+- Môn: Khai phá dữ liệu và Ứng dụng
+- Giảng viên hướng dẫn: ThS. Lê Nhựt Nam
+
+Thành viên nhóm
+| Họ và tên | MSSV | Phần phụ trách |
+|---|---:|---|
 | Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
-| Quách Châu Hạo Kiệt  | 23127078 | Tiền xử lý dữ liệu văn bản |
-| Vũ Anh               | 23127321 | Tiền xử lý dữ liệu bảng |
+| Quách Châu Hạo Kiệt | 23127078 | Tiền xử lý dữ liệu văn bản |
+| Vũ Anh | 23127321 | Tiền xử lý dữ liệu bảng |
 
-**Mục tiêu đồ án:**  
-Xây dựng và trình bày quy trình **tiền xử lý dữ liệu (data preprocessing)** cho ba dạng dữ liệu phổ biến trong học máy:  
-1. **Dữ liệu hình ảnh (Image Data)**  
-2. **Dữ liệu bảng (Tabular Data)**  
-3. **Dữ liệu khác (Text)**  
+## Cấu trúc
 
-Mục tiêu là giúp nhóm hiểu rõ vai trò của tiền xử lý trong pipeline học máy, chuẩn bị dữ liệu sạch, thống nhất và tối ưu cho mô hình.
+Các tệp và thư mục chính
+- `requirements.txt` — danh sách phụ thuộc Python cho các notebook
+- `README.md` — tệp README
+- `data/` — chứa dữ liệu mẫu
+   - `image/dataset/` — tập ảnh dùng trong notebook ảnh
+   - `tabular/fraudTest.csv` — dữ liệu mẫu cho tiền xử lý tabular
+   - `text/IMDB Dataset.csv` — dữ liệu đánh giá phim (IMDB) cho bài xử lý văn bản
+- `notebooks/` — các Jupyter notebook cho từng loại dữ liệu
+   - `01_Image_Preprocessing.ipynb`
+   - `02 _tabular_preprocessing.ipynb`
+   - `03_Text_Preprocessing.ipynb`
 
----
+## Mô tả ngắn các bộ dữ liệu
 
-## **Tiền xử lý dữ liệu hình ảnh**
-**Bộ dữ liệu:** CIFAR-10  
-**Công cụ & Thư viện:** Python, OpenCV, NumPy, Matplotlib, Pandas, Torchvision  
+- Dữ liệu ảnh (`data/image/dataset/`)
+   - Tập ảnh mẫu dùng để minh họa cách thay đổi kích thước (resize), chuyển sang grayscale, chuẩn hóa và phát hiện biên (edge detection). (README gốc có tham chiếu CIFAR-10 — notebook minh họa tương tự trên dữ liệu cung cấp trong thư mục.)
 
-### Các bước thực hiện:
-1. **Loading & Resizing**  
-   - Nạp toàn bộ ảnh từ CIFAR-10.  
-   - Chuẩn hóa kích thước 128×128 và 224×224 bằng **bilinear interpolation**.  
-   - So sánh trade-off giữa kích thước ảnh và chi phí bộ nhớ.  
+- Dữ liệu bảng (`data/tabular/fraudTest.csv`)
+   - Ví dụ nhỏ dùng để thực hành: xử lý giá trị thiếu, mã hóa biến phân loại, chuẩn hóa dữ liệu, và phân tích khám phá cơ bản.
 
-2. **Grayscale Conversion**  
-   - Chuyển RGB → Grayscale theo công thức:  
-     \[ Y = 0.299R + 0.587G + 0.114B \]
-   - Đánh giá mức giữ chi tiết bằng **Var(Laplacian)**.  
+- Dữ liệu văn bản (`data/text/IMDB Dataset.csv`)
+   - Bộ dữ liệu đánh giá phim dùng để minh họa tiền xử lý văn bản: làm sạch, tách từ, loại bỏ stopwords, và chuyển sang biểu diễn số (TF-IDF v.v.).
 
-3. **Normalization & Standardization**  
-   - Thực hiện ba phương pháp chuẩn hóa:
-     | Phương pháp | Công thức | Phạm vi |
-     |--------------|------------|---------|
-     | Min–Max | \(x' = x/255\) | [0,1] |
-     | Symmetric | \(x'' = 2x'-1\) | [-1,1] |
-     | Z-score | \(z = (x-\mu)/\sigma\) | ≈[-3,3] |
+## Hướng dẫn chạy (tóm tắt)
 
-4. **Edge Detection (Bonus)**  
-   - Áp dụng Sobel, Prewitt, Canny để trích đặc trưng biên, phục vụ nhận dạng hình dạng.  
+1. Tạo môi trường Python (khuyến nghị):
 
-**Kết quả:**  
-Ảnh sau xử lý được đồng nhất kích thước, giữ chi tiết biên, histogram sau chuẩn hóa thể hiện dữ liệu cân bằng và ổn định, sẵn sàng cho huấn luyện CNN.
+```bash
+# Trên Windows (bash)
+python -m venv .venv
+source .venv/Scripts/activate
+```
 
----
+2. Cài đặt phụ thuộc:
 
-## **Tiền xử lý dữ liệu bảng**
+```bash
+pip install -r requirements.txt
+```
 
-## Điền vào chỗ trống
+3. Khởi động Jupyter Lab / Notebook và mở các notebook:
 
----
+```bash
+jupyter lab
+# hoặc
+jupyter notebook
+```
 
-## **Tiền xử lý dữ liệu khác**
+4. Mở một notebook trong `notebooks/` và chạy từ trên xuống (run cells top-to-bottom). Mỗi notebook có phần mô tả ngắn ở đầu giải thích mục đích và dữ liệu vào.
 
-## Điền vào chỗ trống
+## Tóm tắt nội dung từng notebook
 
----
+- `01_Image_Preprocessing.ipynb`
+   - Minh họa: đọc ảnh, resize (ví dụ 128×128 và 224×224), chuyển RGB → grayscale, chuẩn hóa (Min–Max, symmetric, Z-score), và tuỳ chọn phát hiện biên (Sobel/Canny). Phù hợp với pipeline chuẩn cho CNN.
 
-## **Tài liệu tham khảo**
-1. CIFAR-10 Dataset – [https://www.cs.toronto.edu/~kriz/cifar.html](https://www.cs.toronto.edu/~kriz/cifar.html)  
-2. OpenCV Documentation – [https://docs.opencv.org/](https://docs.opencv.org/)  
-3. NumPy Documentation – [https://numpy.org/doc/](https://numpy.org/doc/)  
-4. Scikit-learn Preprocessing – [https://scikit-learn.org/stable/modules/preprocessing.html](https://scikit-learn.org/stable/modules/preprocessing.html)  
-5. Matplotlib Documentation – [https://matplotlib.org/stable/contents.html](https://matplotlib.org/stable/contents.html)  
-6. NLTK Toolkit – [https://www.nltk.org/](https://www.nltk.org/)  
+- `02 _tabular_preprocessing.ipynb`
+   - Minh họa: đọc `data/tabular/fraudTest.csv`, xử lý giá trị thiếu, mã hoá biến phân loại (one-hot / label), chuẩn hoá (MinMax, StandardScaler), cùng các bước EDA cơ bản (histogram, correlation).
 
----
+- `03_Text_Preprocessing.ipynb`
+   - Minh họa: đọc `data/text/IMDB Dataset.csv`, làm sạch văn bản, tokenization, loại stopwords, stemming/lemmatization (tuỳ chọn), và chuyển văn bản sang biểu diễn số (TF-IDF / CountVectorizer).
+
+## Phụ thuộc
+
+Danh sách phụ thuộc chi tiết nằm trong `requirements.txt`. Các thư viện thường dùng trong notebook gồm:
+
+- numpy, pandas, matplotlib, scikit-learn, opencv-python, nltk (hoặc spaCy), jupyter
+
+Hãy cài bằng `pip install -r requirements.txt` trước khi chạy các notebook.
+
+
+## Tài liệu tham khảo
+
+- Scikit-learn preprocessing: https://scikit-learn.org/stable/modules/preprocessing.html
+- OpenCV docs: https://docs.opencv.org/
+- CIFAR-10 dataset (tham khảo): https://www.cs.toronto.edu/~kriz/cifar.html
+
+
 
 
