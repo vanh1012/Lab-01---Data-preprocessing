@@ -37,6 +37,24 @@ Mỗi notebook có phần mô tả đầu file, cấu hình đường dẫn dữ
 
 Ghi chú: các notebook đã cấu hình đường dẫn tương đối (ví dụ `../data/...`). Nếu bạn mở notebook từ folder `notebooks/`, đường dẫn sẽ đúng.
 
+### Tải dữ liệu (Data download)
+
+Các file dữ liệu nặng đã được gom vào một Google Drive chung. Vui lòng tải toàn bộ (hoặc các file cần thiết) từ link dưới và đặt chúng vào các thư mục tương ứng trong `data/`:
+
+- Link (Google Drive):
+  - https://drive.google.com/drive/folders/1EMVbFSMM69CriaUEkFH_sDFBbaBlgSL3?usp=sharing
+
+Hướng dẫn ngắn:
+git 
+- Mở link ở trên, tải toàn bộ nội dung hoặc chỉ các tệp bạn cần.
+- Sau khi tải xong, đặt các tệp vào:
+
+```
+data/tabular/    # chứa fraud dataset CSV (ví dụ fraudTest.csv)
+data/image/      # chứa CIFAR hoặc thư mục ảnh mẫu
+data/text/       # chứa IMDB hoặc các file text nếu cần
+```
+
 ### Kết quả mong đợi
 
 Khi chạy từng notebook (từ trên xuống), bạn sẽ nhận được:
