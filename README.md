@@ -8,6 +8,14 @@ Quách Châu Hạo Kiệt - 23127078 - Tiền xử lý dữ liệu văn bản
 
 Tài liệu này mô tả nội dung, cấu trúc và hướng dẫn tái tạo (reproducibility) cho Lab 01 — một bộ notebook minh họa các bước tiền xử lý dữ liệu cho dữ liệu ảnh, bảng và văn bản.
 
+### Thành viên / Contributors
+
+| Họ và tên | MSSV | Phần phụ trách |
+|---|---:|---|
+| Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
+| Vũ Anh | 23127321 | Tiền xử lý dữ liệu bảng |
+| Quách Châu Hạo Kiệt | 23127078 | Tiền xử lý dữ liệu văn bản |
+
 ### Tóm tắt (Abstract)
 
 Mục tiêu của repository là cung cấp một pipeline tiền xử lý minh họa, có thể chạy lại được, để sinh viên thực hành các bước tiền xử lý chuẩn: làm sạch dữ liệu, mã hoá biến, chuẩn hoá, trích đặc trưng (feature engineering) và xuất artefact (bảng/ảnh/manifest). Các notebook đều kèm ví dụ, trực quan hóa và lưu kết quả để dùng tiếp cho mô hình hoá.
