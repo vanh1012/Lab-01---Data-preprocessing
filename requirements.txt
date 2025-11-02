@@ -11,3 +11,4 @@ tqdm==4.67.1
 regex==2025.9.1
 python-dateutil==2.9.0.post0
 pytz==2025.2
+scikit-image>=0.22.0
