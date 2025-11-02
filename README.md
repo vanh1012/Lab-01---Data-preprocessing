@@ -1,20 +1,14 @@
 ## Lab 01 — Tiền xử lý dữ liệu (Data Preprocessing)
 
-Thành viên nhóm bao gồm:
-
-Nguyễn Trần Minh Thư - 22127405 - Tiền xử lý dữ liệu hình ảnh
-Phan Vũ Anh - 23127321 - Tiền xử lý dữ liệu bảng
-Quách Châu Hạo Kiệt - 23127078 - Tiền xử lý dữ liệu văn bản
-
-Tài liệu này mô tả nội dung, cấu trúc và hướng dẫn tái tạo (reproducibility) cho Lab 01 — một bộ notebook minh họa các bước tiền xử lý dữ liệu cho dữ liệu ảnh, bảng và văn bản.
-
-### Thành viên / Contributors
+### Thành viên 
 
 | Họ và tên | MSSV | Phần phụ trách |
 |---|---:|---|
 | Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
 | Vũ Anh | 23127321 | Tiền xử lý dữ liệu bảng |
 | Quách Châu Hạo Kiệt | 23127078 | Tiền xử lý dữ liệu văn bản |
+
+Tài liệu này mô tả nội dung, cấu trúc và hướng dẫn tái tạo (reproducibility) cho Lab 01 — một bộ notebook minh họa các bước tiền xử lý dữ liệu cho dữ liệu ảnh, bảng và văn bản.
 
 ### Tóm tắt (Abstract)
 
