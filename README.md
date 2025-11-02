@@ -1,77 +1,97 @@
-# **LAB 01 – TIỀN XỬ LÝ DỮ LIỆU (DATA PREPROCESSING)**
+## Lab 01 — Tiền xử lý dữ liệu (Data Preprocessing)
+Tài liệu này mô tả nội dung, cấu trúc và hướng dẫn tái tạo (reproducibility) cho Lab 01 — một bộ notebook minh họa các bước tiền xử lý dữ liệu cho dữ liệu ảnh, bảng và văn bản.
 
-## **Giới thiệu đồ án**
-- **Môn học:** Khai phá dữ liệu và Ứng dụng  
-- **Giảng viên hướng dẫn:** ThS. Lê Nhựt Nam  
+### Thành viên 
 
-### **Thành viên nhóm**
-| Họ và tên            | MSSV     | Vai trò |
-|----------------------|----------|----------|
+| Họ và tên | MSSV | Phần phụ trách |
+|---|---:|---|
 | Nguyễn Trần Minh Thư | 22127405 | Tiền xử lý dữ liệu hình ảnh |
-| Quách Châu Hạo Kiệt  | 23127078 | Tiền xử lý dữ liệu văn bản |
-| Vũ Anh               | 23127321 | Tiền xử lý dữ liệu bảng |
+| Vũ Anh | 23127321 | Tiền xử lý dữ liệu bảng |
+| Quách Châu Hạo Kiệt | 23127078 | Tiền xử lý dữ liệu văn bản |
 
-**Mục tiêu đồ án:**  
-Xây dựng và trình bày quy trình **tiền xử lý dữ liệu (data preprocessing)** cho ba dạng dữ liệu phổ biến trong học máy:  
-1. **Dữ liệu hình ảnh (Image Data)**  
-2. **Dữ liệu bảng (Tabular Data)**  
-3. **Dữ liệu khác (Text)**  
+### Tóm tắt (Abstract)
 
-Mục tiêu là giúp nhóm hiểu rõ vai trò của tiền xử lý trong pipeline học máy, chuẩn bị dữ liệu sạch, thống nhất và tối ưu cho mô hình.
+Mục tiêu của repository là cung cấp một pipeline tiền xử lý minh họa, có thể chạy lại được, để sinh viên thực hành các bước tiền xử lý chuẩn: làm sạch dữ liệu, mã hoá biến, chuẩn hoá, trích đặc trưng (feature engineering) và xuất artefact (bảng/ảnh/manifest). Các notebook đều kèm ví dụ, trực quan hóa và lưu kết quả để dùng tiếp cho mô hình hoá.
 
----
+### Quick facts
 
-## **Tiền xử lý dữ liệu hình ảnh**
-**Bộ dữ liệu:** CIFAR-10  
-**Công cụ & Thư viện:** Python, OpenCV, NumPy, Matplotlib, Pandas, Torchvision  
+- Ngôn ngữ: Python 3.8+ (khuyến nghị 3.10+)
+- Môi trường: Jupyter Notebook / JupyterLab
+- Thư viện chính: numpy, pandas, scikit-learn, matplotlib, opencv-python, pillow, nltk
 
-### Các bước thực hiện:
-1. **Loading & Resizing**  
-   - Nạp toàn bộ ảnh từ CIFAR-10.  
-   - Chuẩn hóa kích thước 128×128 và 224×224 bằng **bilinear interpolation**.  
-   - So sánh trade-off giữa kích thước ảnh và chi phí bộ nhớ.  
+### Nội dung chính
 
-2. **Grayscale Conversion**  
-   - Chuyển RGB → Grayscale theo công thức:  
-     \[ Y = 0.299R + 0.587G + 0.114B \]
-   - Đánh giá mức giữ chi tiết bằng **Var(Laplacian)**.  
+Thư mục `notebooks/` chứa 3 notebook tương ứng ba loại dữ liệu:
 
-3. **Normalization & Standardization**  
-   - Thực hiện ba phương pháp chuẩn hóa:
-     | Phương pháp | Công thức | Phạm vi |
-     |--------------|------------|---------|
-     | Min–Max | \(x' = x/255\) | [0,1] |
-     | Symmetric | \(x'' = 2x'-1\) | [-1,1] |
-     | Z-score | \(z = (x-\mu)/\sigma\) | ≈[-3,3] |
+- `01_Image_Preprocessing.ipynb` — đọc/chuẩn hóa/resize ảnh, benchmark nội suy, edge detection (Sobel/Prewitt/Canny), xuất ảnh demo và các CSV kết quả.
+- `02_tabular_preprocessing.ipynb` — EDA nhanh, xử lý giá trị thiếu, chuẩn hóa (Z-score / Robust), mã hoá phân loại (One-Hot / Frequency), feature selection (VarianceThreshold, correlation pruning).
+- `03_Text_Preprocessing.ipynb` — làm sạch văn bản, tokenization, stopword removal, stemming/lemmatization, vectorization (Count / TF-IDF) và trực quan hóa.
 
-4. **Edge Detection (Bonus)**  
-   - Áp dụng Sobel, Prewitt, Canny để trích đặc trưng biên, phục vụ nhận dạng hình dạng.  
+Mỗi notebook có phần mô tả đầu file, cấu hình đường dẫn dữ liệu và các biến cấu hình để bạn dễ chỉnh.
 
-**Kết quả:**  
-Ảnh sau xử lý được đồng nhất kích thước, giữ chi tiết biên, histogram sau chuẩn hóa thể hiện dữ liệu cân bằng và ổn định, sẵn sàng cho huấn luyện CNN.
+### Dữ liệu 
 
----
+- `data/image/` — ảnh mẫu, kèm khả năng tạo ảnh synthetic nếu không có tập thật.
+- `data/tabular/fraudTest.csv` — dataset mẫu cho tiền xử lý tabular (ví dụ: phát hiện gian lận).
+- `data/text/IMDB Dataset.csv` — bộ dữ liệu đánh giá phim (IMDB) dùng cho tiền xử lý văn bản.
 
-## **Tiền xử lý dữ liệu bảng**
+Ghi chú: các notebook đã cấu hình đường dẫn tương đối (ví dụ `../data/...`). Nếu bạn mở notebook từ folder `notebooks/`, đường dẫn sẽ đúng.
 
-## Điền vào chỗ trống
+### Kết quả mong đợi
 
----
+Khi chạy từng notebook (từ trên xuống), bạn sẽ nhận được:
 
-## **Tiền xử lý dữ liệu khác**
+- Các file CSV tổng hợp (benchmark, stats, manifests) được lưu trong `outputs/` (hoặc `notebooks/outputs` tuỳ cấu hình trong notebook).
+- Các ảnh minh họa / figure trong thư mục `outputs/figs` hoặc `outputs/demo_export`.
+- DataFrame đã tiền xử lý có thể được lưu lại để dùng cho bước huấn luyện tiếp theo.
 
-## Điền vào chỗ trống
+### Reproducibility — cách chạy nhanh
 
----
+1) Tạo môi trường ảo và kích hoạt (Windows, bash):
 
-## **Tài liệu tham khảo**
-1. CIFAR-10 Dataset – [https://www.cs.toronto.edu/~kriz/cifar.html](https://www.cs.toronto.edu/~kriz/cifar.html)  
-2. OpenCV Documentation – [https://docs.opencv.org/](https://docs.opencv.org/)  
-3. NumPy Documentation – [https://numpy.org/doc/](https://numpy.org/doc/)  
-4. Scikit-learn Preprocessing – [https://scikit-learn.org/stable/modules/preprocessing.html](https://scikit-learn.org/stable/modules/preprocessing.html)  
-5. Matplotlib Documentation – [https://matplotlib.org/stable/contents.html](https://matplotlib.org/stable/contents.html)  
-6. NLTK Toolkit – [https://www.nltk.org/](https://www.nltk.org/)  
+```bash
+python -m venv .venv
+source .venv/Scripts/activate
+```
 
----
+2) Cài phụ thuộc:
+
+```bash
+pip install -r requirements.txt
+```
+
+3) Khởi động Jupyter và mở notebook bạn cần:
+
+```bash
+jupyter lab   # hoặc `jupyter notebook`
+```
+
+4) Chạy các cell từ trên xuống. Nếu notebook dùng biến `OUT_ROOT`, kiểm tra/đổi đường dẫn nếu cần.
+
+### Cấu trúc repository
+
+```
+.
+├─ data/
+│  ├─ image/
+│  ├─ tabular/
+│  └─ text/
+├─ notebooks/
+│  ├─ 01_Image_Preprocessing.ipynb
+│  ├─ 02_tabular_preprocessing.ipynb
+│  └─ 03_Text_Preprocessing.ipynb
+├─ requirements.txt
+├─ README.md
+└─ REFERENCES.md
+```
+
+### Tài liệu tham khảo
+
+Xem `REFERENCES.md` để biết danh sách các nguồn, thư viện và bài báo/công cụ tham chiếu liên quan.
+
+
+
+
+
 
 
