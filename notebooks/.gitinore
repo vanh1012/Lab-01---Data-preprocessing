@@ -1,0 +1,18 @@
+# === DATASETS & ARCHIVES ===
+data/cifar-10-python.tar.gz
+data/cifar-10-batches-py/
+*.tar
+*.tar.gz
+*.zip
+
+# === GENERATED OUTPUTS ===
+output/
+outputs/
+**/figs/
+**/*.csv
+**/*.npy
+
+# === OS / EDITOR ===
+.DS_Store
+Thumbs.db
+.vscode/
