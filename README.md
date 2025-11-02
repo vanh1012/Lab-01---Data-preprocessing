@@ -42,6 +42,3 @@ Sau khi tải về, đặt file `.tar.gz` vào thư mục `data/` trong repo
 - Giải nén dữ liệu.
 - Chuyển đổi và hiển thị ảnh mẫu.
 - Tiền xử lý và so sánh các kỹ thuật.
-
-Tiền xử lý và so sánh các kỹ thuật.
-
